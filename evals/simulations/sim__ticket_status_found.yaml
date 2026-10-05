@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__ticket_status_found
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to check on a support ticket I thought was open, but if none exists, I want to know
+    success_criteria: The user is informed that no active tickets exist on their account
+    response_guide: Ask to check the status of your support ticket. Provide your account number and verify your identity.
+      When told there are no open tickets, ask to confirm
+    max_turns: 8
+  expectations:
+  - The user is clearly informed that there are no active support tickets on their account
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

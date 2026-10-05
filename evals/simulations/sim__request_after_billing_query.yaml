@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_after_billing_query
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to check my bill balance, but then I want to talk to a human to explain it to me
+    success_criteria: The user asks about their bill, then requests an agent, and is successfully transferred with the verbatim
+      handoff
+    response_guide: Say 'How much is my bill?' After the agent answers, say 'That doesn't sound right, let me talk to a real
+      person.'
+    max_turns: 8
+  expectations:
+  - The agent must transfer the user to a live representative upon request
+  - The agent must play the verbatim live agent handoff message
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

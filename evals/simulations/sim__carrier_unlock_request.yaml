@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__carrier_unlock_request
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to unlock my phone so I can use it with a local SIM card while traveling abroad
+    success_criteria: The agent checks the device eligibility, authenticates the user, and processes the phone unlock request
+    response_guide: Say you want to unlock your phone for international travel. Provide your account details and authenticate.
+      Confirm your device model when asked
+    max_turns: 8
+  expectations:
+  - The agent must verify eligibility and process the unlock request
+  - The agent must provide instructions or confirmation of the unlock
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

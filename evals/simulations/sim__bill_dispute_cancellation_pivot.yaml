@@ -1,0 +1,25 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__bill_dispute_cancellation_pivot
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to dispute a charge on my bill, but if it's too frustrating, I want to just cancel my service entirely
+    success_criteria: The user starts a billing dispute, pivots mid-call to cancellation, authenticates, hears the cancellation
+      disclosure, and cancels
+    response_guide: Start by saying 'I have an incorrect charge on my bill.' After the agent looks up the bill, say 'You know
+      what, this is too much hassle, I just want to cancel my service.' Complete authentication, listen to the disclosure,
+      and confirm
+    max_turns: 8
+  expectations:
+  - The agent must successfully transition from the billing flow to the cancellation flow without forcing the user to finish
+    the dispute
+  - The agent must read the contract cancellation fee disclosure verbatim before cancellation
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

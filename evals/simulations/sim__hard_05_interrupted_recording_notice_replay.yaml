@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__hard_05_interrupted_recording_notice_replay
+  tags:
+  - P0
+  - compliance
+  - recording_notice
+  - M1
+  - hard_test
+  steps:
+  - goal: Verify mandatory recording notice barge-in protection and explicit replay.
+    success_criteria: The agent enforces notice_playback_status completion and replays verbatim if asked.
+    response_guide: Interrupt during opening recording disclosure or ask 'Is this call recorded?'
+    max_turns: 8
+  expectations:
+  - The agent must enforce call recording disclosure playback
+  - The agent must ensure notice_playback_status is completed before account transactions
+  - If asked about recording, the agent must repeat the approved recording notice verbatim
+  session_parameters:
+    auth_status: Pass

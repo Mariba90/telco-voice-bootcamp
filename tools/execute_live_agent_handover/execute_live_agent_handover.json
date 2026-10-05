@@ -1,0 +1,8 @@
+{
+  "displayName": "execute_live_agent_handover",
+  "pythonFunction": {
+    "name": "execute_live_agent_handover",
+    "description": "Transfers the caller to a human specialist with allowlisted session context. Connect the caller to a live customer service specialist.",
+    "pythonCode": "tools/execute_live_agent_handover/python_function/python_code.py"
+  }
+}

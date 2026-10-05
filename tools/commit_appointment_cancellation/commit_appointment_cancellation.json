@@ -1,0 +1,8 @@
+{
+  "displayName": "commit_appointment_cancellation",
+  "pythonFunction": {
+    "name": "commit_appointment_cancellation",
+    "description": "Cancels a scheduled appointment after caller confirmation. Process appointment cancellation.",
+    "pythonCode": "tools/commit_appointment_cancellation/python_function/python_code.py"
+  }
+}

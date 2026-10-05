@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__book_technician_appointment
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to book a technician visit because my internet is completely down and virtual troubleshooting didn't work
+    success_criteria: The agent looks up availability, offers 2-3 slots, commits the booking, and sends an SMS confirmation
+    response_guide: Say 'I need to book a technician appointment.' Authenticate when prompted. Choose the first available
+      slot offered by the agent
+    max_turns: 8
+  expectations:
+  - The agent must offer 2-3 specific time slots
+  - The agent must send an SMS confirmation after committing the booking
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

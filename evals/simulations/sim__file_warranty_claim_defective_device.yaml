@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__file_warranty_claim_defective_device
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: File a warranty claim for a defective device
+    success_criteria: 'The agent accomplishes: file a warranty claim for a defective device.'
+    response_guide: Play a user who needs to file a warranty claim for a defective device. Provide details the agent asks
+      for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: file a warranty claim for a defective device.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

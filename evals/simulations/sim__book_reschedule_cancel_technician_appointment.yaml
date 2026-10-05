@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__book_reschedule_cancel_technician_appointment
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Book, reschedule, or cancel a technician appointment
+    success_criteria: 'The agent accomplishes: book, reschedule, or cancel a technician appointment.'
+    response_guide: Play a user who needs to book, reschedule, or cancel a technician appointment. Provide details the agent
+      asks for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: book, reschedule, or cancel a technician appointment.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

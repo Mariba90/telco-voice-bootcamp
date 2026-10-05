@@ -1,0 +1,8 @@
+{
+  "displayName": "check_service_coverage",
+  "pythonFunction": {
+    "name": "check_service_coverage",
+    "description": "Checks service availability and technology offerings at a given physical address. Check network coverage and plan availability at the provided address.",
+    "pythonCode": "tools/check_service_coverage/python_function/python_code.py"
+  }
+}

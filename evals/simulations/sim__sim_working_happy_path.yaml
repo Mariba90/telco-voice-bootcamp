@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__sim_working_happy_path
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to get my new SIM card working because my phone currently says 'No Service'
+    success_criteria: The agent identifies the caller, authenticates them, diagnoses the SIM card status, and successfully
+      activates the SIM card
+    response_guide: State that your new SIM card isn't working. Provide your phone number and verify your identity with the
+      OTP code when prompted. Confirm that the phone now shows signal after the agent updates the status
+    max_turns: 8
+  expectations:
+  - The agent must authenticate the caller before modifying any SIM card settings
+  - The agent must confirm that the SIM card has been successfully activated
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

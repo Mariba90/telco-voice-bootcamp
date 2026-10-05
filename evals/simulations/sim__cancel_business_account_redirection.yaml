@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_business_account_redirection
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  - business_handoff
+  steps:
+  - goal: I want to cancel the internet service for my business account
+    success_criteria: The user is recognized as a business account and is immediately transferred to a business agent with
+      the appropriate verbatim message
+    response_guide: Say 'I need to cancel my business internet line.' Provide your business account details when asked
+    max_turns: 8
+  expectations:
+  - The agent must play the verbatim business handoff message
+  - The agent must not attempt to self-serve the cancellation for a business account
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    business_flag: true

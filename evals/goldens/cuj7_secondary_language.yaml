@@ -1,0 +1,25 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  cirn: "CRN-1002"
+
+conversations:
+  - conversation: golden__cuj7__spanish_live_agent_handover
+    tags: [P0, CUJ-7, goldens, spanish, live_agent_handoff]
+    session_parameters:
+      auth_status: "Pass"
+      cirn: "CRN-1002"
+      language_locale: "es-US"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Gracias por llamar a Telco Voice Central. Esta llamada puede ser grabada. ¿En qué puedo ayudarle hoy?"
+      - user: "Quiero hablar con una persona en español por favor."
+        agent: "Con gusto le transfiero a un representante en español. Por favor permanezca en la línea."
+        tool_calls:
+          - action: execute_live_agent_handover
+            args:
+              cirn: "CRN-1002"
+              reason_code: "secondary_language_live_agent"
+    expectations:
+      - "The agent turns must remain in Spanish"
+      - "execute_live_agent_handover must be called with reason_code secondary_language_live_agent"

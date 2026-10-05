@@ -1,0 +1,36 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  cirn: "CRN-1002"
+  billing_account: "ACC-8821"
+
+conversations:
+  - conversation: golden__cuj5__sales_add_tv
+    tags: [P0, CUJ-5, goldens, sales]
+    session_parameters:
+      auth_status: "Pass"
+      cirn: "CRN-1002"
+      billing_account: "ACC-8821"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Thanks for calling Telco Voice Central. This call may be recorded for quality and training. How can I help you today?"
+      - user: "I have fiber internet and I want to add TV service."
+        agent: "I'd love to help with that. Let me check the service packages available at your address."
+        tool_calls:
+          - action: check_service_coverage
+            args:
+              cirn: "CRN-1002"
+              target_lob: "tv"
+          - action: fetch_plan_catalog
+            args:
+              lob: "tv"
+      - user: "The Essential Streaming plan for $45 sounds perfect. Let's add that."
+        agent: "Your order for Essential Streaming TV has been placed. Your monthly rate will be $45.00."
+        tool_calls:
+          - action: place_service_order
+            args:
+              cirn: "CRN-1002"
+              plan_id: "PLAN-TV-ESSENTIAL"
+    expectations:
+      - "check_service_coverage and fetch_plan_catalog must be called"
+      - "place_service_order must be called with the requested plan_id"

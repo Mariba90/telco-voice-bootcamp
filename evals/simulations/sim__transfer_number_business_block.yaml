@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__transfer_number_business_block
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  - business_handoff
+  steps:
+  - goal: I want to transfer my business phone number to Telco
+    success_criteria: The agent identifies the business intent or account type and transfers the caller to the business queue
+    response_guide: Say 'I want to transfer my business phone number from my old carrier.' Confirm that it is a business line
+      when asked
+    max_turns: 8
+  expectations:
+  - The agent must detect the business context and transfer using the verbatim business handoff line
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    business_flag: true

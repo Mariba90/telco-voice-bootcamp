@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__hard_04_system_down_degradation
+  tags:
+  - P0
+  - system_down
+  - error_handling
+  - M1
+  - hard_test
+  steps:
+  - goal: Verify graceful degradation and live handoff when backend tools return SYSTEM_DOWN.
+    success_criteria: The agent detects backend outage, avoids fabricating success, and offers specialist transfer.
+    response_guide: Ask to pay your bill or view plans when the backend returns SYSTEM_DOWN.
+    max_turns: 8
+  expectations:
+  - The agent must not invent or fabricate account data during backend failure
+  - The agent must inform the caller of temporary system unavailability
+  - The agent must transfer to a specialist with reason system_unavailable
+  session_parameters:
+    billing_account: ACC-8821

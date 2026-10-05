@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__report_fraud_stolen_phone
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I want to report that my phone was stolen and someone is using it to make unauthorized calls
+    success_criteria: The user is immediately escalated to the fraud queue with the verbatim empathy protocol
+    response_guide: Say 'My phone was stolen and someone is running up charges on my account right now\!' Express urgency
+    max_turns: 8
+  expectations:
+  - The user hears the verbatim empathy protocol
+  - The user is immediately escalated to a live agent without being forced to complete standard self-serve troubleshooting
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

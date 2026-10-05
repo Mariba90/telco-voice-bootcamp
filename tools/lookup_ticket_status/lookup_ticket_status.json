@@ -1,0 +1,8 @@
+{
+  "displayName": "lookup_ticket_status",
+  "pythonFunction": {
+    "name": "lookup_ticket_status",
+    "description": "Checks the status and latest update on an existing support or dispute ticket. Lookup ticket progress and latest updates.",
+    "pythonCode": "tools/lookup_ticket_status/python_function/python_code.py"
+  }
+}

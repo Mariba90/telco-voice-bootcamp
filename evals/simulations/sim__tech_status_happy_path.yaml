@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__tech_status_happy_path
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to find out when the technician is coming to fix my internet today
+    success_criteria: The user successfully learns the arrival window of their scheduled technician
+    response_guide: State that you are calling to check on your appointment. Provide your phone number and verify your identity
+      when prompted. Confirm you want the status of today's visit
+    max_turns: 8
+  expectations:
+  - The user is informed of the correct scheduled time window for their technician visit
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

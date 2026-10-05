@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_availability_slots",
+  "pythonFunction": {
+    "name": "fetch_availability_slots",
+    "description": "Fetches available technician visit slots with timezones. Check available technician appointment time slots.",
+    "pythonCode": "tools/fetch_availability_slots/python_function/python_code.py"
+  }
+}

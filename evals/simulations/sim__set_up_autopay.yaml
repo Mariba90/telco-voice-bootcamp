@@ -1,0 +1,20 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__set_up_autopay
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Set up autopay
+    success_criteria: 'The agent accomplishes: set up autopay.'
+    response_guide: Play a user who needs to set up autopay. Provide details the agent asks for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: set up autopay.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

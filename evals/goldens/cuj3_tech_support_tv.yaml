@@ -1,0 +1,39 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  cirn: "CRN-1002"
+
+conversations:
+  - conversation: golden__cuj3__tv_no_signal_virtual_repair
+    tags: [P0, CUJ-3, goldens, tech_support, virtual_repair]
+    session_parameters:
+      auth_status: "Pass"
+      lob: "tv"
+      tv_sub_type: "streaming"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Thanks for calling Telco Voice Central. This call may be recorded for quality and training. How can I help you today?"
+      - user: "My TV isn't working, it says no signal."
+        agent: "Let's get that sorted out. First, let me check for any service alerts in your area."
+        tool_calls:
+          - action: check_regional_outage
+            args:
+              region: "NE-METRO-01"
+              lob: "tv"
+          - action: start_virtual_repair
+            args:
+              cirn: "CRN-1002"
+              lob: "tv"
+              tv_sub_type: "streaming"
+      - user: "The HDMI cable was loose. I pushed it in and now the picture is back on!"
+        agent: "Great news! I am glad that resolved the issue. Is there anything else I can help with?"
+        tool_calls:
+          - action: submit_diagnostic_step
+            args:
+              session_id: "VR-3301"
+              step_number: 1
+              outcome: "passed"
+    expectations:
+      - "check_regional_outage must be called before hardware troubleshooting"
+      - "start_virtual_repair must be called with tv_sub_type streaming"
+      - "submit_diagnostic_step must record step outcome"

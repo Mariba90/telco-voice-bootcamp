@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_service_auth_retry
+  tags:
+  - P0
+  - simulations
+  - cancellation
+  - port_out
+  - M7
+  steps:
+  - goal: I want to cancel my TV service, but I might enter the wrong security code the first time
+    success_criteria: The user is able to retry authentication after a failed attempt, successfully authenticates, hears the
+      cancellation fee disclosure, and cancels the service
+    response_guide: Say 'I want to cancel my TV package.' When sent a verification code, intentionally provide an incorrect
+      6-digit code first. When prompted again, provide the correct code. Listen to the cancellation disclosure and confirm
+    max_turns: 8
+  expectations:
+  - The agent must allow a retry after a failed verification attempt
+  - The agent must read the contract cancellation fee disclosure verbatim before cancellation
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

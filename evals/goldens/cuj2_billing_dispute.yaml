@@ -1,0 +1,36 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  billing_account: "ACC-8821"
+
+conversations:
+  - conversation: golden__cuj2__billing_auto_adjustment
+    tags: [P0, CUJ-2, goldens, billing, dispute]
+    session_parameters:
+      auth_status: "Pass"
+      billing_account: "ACC-8821"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Thanks for calling Telco Voice Central. This call may be recorded for quality and training. How can I help you today?"
+      - user: "I see an extra $14.50 charge on my bill. Can you check this?"
+        agent: "Let me pull up your recent billing statements to take a look."
+        tool_calls:
+          - action: fetch_recent_bills
+            args:
+              billing_account: "ACC-8821"
+      - user: "Yes, that late fee should be waived. Can you credit it?"
+        agent: "I have reviewed your account and applied a one-time courtesy statement credit of $14.50 to your account."
+        tool_calls:
+          - action: evaluate_adjustment_eligibility
+            args:
+              billing_account: "ACC-8821"
+              charge_id: "CHG-102"
+              requested_amount: 14.50
+          - action: execute_adjustment
+            args:
+              billing_account: "ACC-8821"
+              amount: 14.50
+    expectations:
+      - "fetch_recent_bills must be called before evaluate_adjustment_eligibility"
+      - "execute_adjustment must be called with amount 14.50"
+      - "The agent must not invoke create_dispute_ticket for an immediate credit"

@@ -1,0 +1,8 @@
+{
+  "displayName": "commit_appointment_reschedule",
+  "pythonFunction": {
+    "name": "commit_appointment_reschedule",
+    "description": "Reschedules an existing appointment to a new confirmed slot. Confirm and lock in the rescheduled appointment time.",
+    "pythonCode": "tools/commit_appointment_reschedule/python_function/python_code.py"
+  }
+}

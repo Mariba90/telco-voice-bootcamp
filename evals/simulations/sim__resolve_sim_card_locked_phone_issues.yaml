@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__resolve_sim_card_locked_phone_issues
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Resolve SIM card or locked phone issues
+    success_criteria: 'The agent accomplishes: resolve SIM card or locked phone issues.'
+    response_guide: Play a user who needs to resolve SIM card or locked phone issues. Provide details the agent asks for and
+      pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: resolve SIM card or locked phone issues.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

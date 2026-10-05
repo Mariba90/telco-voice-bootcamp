@@ -1,0 +1,9 @@
+{
+  "displayName": "add_technician_note",
+  "pythonFunction": {
+    "name": "add_technician_note",
+    "description": "Attaches a note or gate/access instructions for the dispatched or en-route technician on an active appointment.",
+    "pythonCode": "tools/add_technician_note/python_function/python_code.py"
+  }
+}
+

@@ -1,0 +1,8 @@
+{
+  "displayName": "validate_authentication_pin",
+  "pythonFunction": {
+    "name": "validate_authentication_pin",
+    "description": "Validates the 4-digit security PIN captured from native phone keypad input. If the PIN is invalid or consists of repeated digits (like 0000, 1111, 2222, etc.), returns auth_status 'Fail' and decrements attempts_remaining (starts at 3, decrements to 2, 1, 0). If valid, returns auth_status 'Pass'.",
+    "pythonCode": "tools/validate_authentication_pin/python_function/python_code.py"
+  }
+}

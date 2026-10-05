@@ -1,0 +1,8 @@
+{
+  "displayName": "configure_autopay",
+  "pythonFunction": {
+    "name": "configure_autopay",
+    "description": "Configures automatic recurring payments for the billing account. Tell the customer you are setting up recurring autopay.",
+    "pythonCode": "tools/configure_autopay/python_function/python_code.py"
+  }
+}

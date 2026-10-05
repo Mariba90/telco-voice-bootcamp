@@ -1,0 +1,37 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  cirn: "CRN-1002"
+
+conversations:
+  - conversation: golden__cuj4__reschedule_appointment
+    tags: [P0, CUJ-4, goldens, appointments]
+    session_parameters:
+      auth_status: "Pass"
+      cirn: "CRN-1002"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Thanks for calling Telco Voice Central. This call may be recorded for quality and training. How can I help you today?"
+      - user: "I need to reschedule my technician appointment."
+        agent: "Let me retrieve your active appointments and find available appointment slots."
+        tool_calls:
+          - action: fetch_active_appointments
+            args:
+              cirn: "CRN-1002"
+          - action: fetch_availability_slots
+            args:
+              postal_code: "10001"
+      - user: "Please move it to the Friday morning slot between 8 AM and 12 PM."
+        agent: "Your appointment has been successfully rescheduled for Friday between 8 AM and 12 PM. I have sent a confirmation text message."
+        tool_calls:
+          - action: commit_appointment_reschedule
+            args:
+              appointment_id: "APT-4401"
+              slot_id: "SLOT-FR-AM"
+          - action: send_sms_notification
+            args:
+              cirn: "CRN-1002"
+    expectations:
+      - "fetch_active_appointments and fetch_availability_slots must be called"
+      - "commit_appointment_reschedule must be called with the chosen slot"
+      - "send_sms_notification must be triggered for confirmation"

@@ -1,0 +1,15 @@
+{
+  "displayName": "appointments_agent",
+  "instruction": "agents/appointments_agent/instruction.txt",
+  "tools": [
+    "fetch_active_appointments",
+    "fetch_availability_slots",
+    "commit_appointment_reschedule",
+    "commit_appointment_booking",
+    "commit_appointment_cancellation",
+    "lookup_ticket_status",
+    "add_technician_note",
+    "send_sms_notification",
+    "execute_live_agent_handover"
+  ]
+}

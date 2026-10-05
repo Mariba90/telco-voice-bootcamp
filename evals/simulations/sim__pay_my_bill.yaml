@@ -1,0 +1,20 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__pay_my_bill
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Pay my bill
+    success_criteria: 'The agent accomplishes: pay my bill.'
+    response_guide: Play a user who needs to pay my bill. Provide details the agent asks for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: pay my bill.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

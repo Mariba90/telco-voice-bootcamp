@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__report_fraud_unauthorized_charges
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I want to report unauthorized charges on my account that I did not make
+    success_criteria: The user receives the verbatim empathy protocol and is immediately escalated to a live agent without
+      any self-serve or authentication attempts
+    response_guide: Say 'Someone used my account to buy things\!' or 'There is fraud on my account.' Express concern and accept
+      the transfer to a specialist
+    max_turns: 8
+  expectations:
+  - The user hears the verbatim empathy protocol
+  - The user is immediately escalated to a live agent without being asked to authenticate
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

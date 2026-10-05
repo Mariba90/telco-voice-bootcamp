@@ -1,0 +1,14 @@
+{
+  "displayName": "tech_support_agent",
+  "instruction": "agents/tech_support_agent/instruction.txt",
+  "tools": [
+    "check_regional_outage",
+    "start_virtual_repair",
+    "submit_diagnostic_step",
+    "create_technical_ticket",
+    "register_outage_notification",
+    "send_sms_notification",
+    "execute_live_agent_handover",
+    "place_service_order"
+  ]
+}

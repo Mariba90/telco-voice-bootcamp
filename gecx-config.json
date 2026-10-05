@@ -1,0 +1,11 @@
+{
+  "gcp_project_id": "gcp-i-and-d-practitioners",
+  "location": "us",
+  "app_name": "telco-voice-central",
+  "app_dir": ".",
+  "agent_dir": "agents/root_agent",
+  "model": "gemini-2.5-flash",
+  "modality": "voice",
+  "default_channel": "voice",
+  "deployed_app_id": "maryam-telco-voice-central"
+}

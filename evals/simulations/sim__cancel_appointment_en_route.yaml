@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_appointment_en_route
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to cancel my appointment, but the technician is already on their way
+    success_criteria: The agent explains that the appointment cannot be canceled because the technician is en-route, and offers
+      to leave a note instead
+    response_guide: Say 'I want to cancel my technician visit.' Authenticate when prompted. When told the technician is already
+      en-route and cannot cancel, ask the agent to leave a note to leave the package at the door
+    max_turns: 8
+  expectations:
+  - The agent must politely explain that cancellation is impossible because the technician is en-route
+  - The agent must offer to leave a note for the technician
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

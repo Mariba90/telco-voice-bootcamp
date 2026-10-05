@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__mfa_vague_request
+  tags:
+  - P0
+  - simulations
+  - auth
+  - security
+  - M7
+  steps:
+  - goal: I want to secure my login but I'm not sure what it's called
+    success_criteria: The user is guided
+    response_guide: Say 'I want to make my login more secure.' When asked if you want to enable multi-factor authentication,
+      say 'Yes, that's it.' Proceed with the setup
+    max_turns: 8
+  expectations:
+  - The agent successfully disambiguates the vague request and routes the user to the MFA setup flow
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

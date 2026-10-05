@@ -1,0 +1,8 @@
+{
+  "displayName": "check_suspension_status",
+  "pythonFunction": {
+    "name": "check_suspension_status",
+    "description": "Checks the suspension state and reason for a line of service. Check line suspension status and outstanding balance.",
+    "pythonCode": "tools/check_suspension_status/python_function/python_code.py"
+  }
+}

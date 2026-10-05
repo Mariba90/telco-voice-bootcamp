@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__transfer_my_phone_number_another_carrier
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Transfer my phone number from another carrier
+    success_criteria: 'The agent accomplishes: transfer my phone number from another carrier.'
+    response_guide: Play a user who needs to transfer my phone number from another carrier. Provide details the agent asks
+      for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: transfer my phone number from another carrier.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

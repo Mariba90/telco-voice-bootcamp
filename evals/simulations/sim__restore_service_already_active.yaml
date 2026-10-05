@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__restore_service_already_active
+  tags:
+  - P0
+  - simulations
+  - restore
+  - M7
+  - M3
+  steps:
+  - goal: I think my service is suspended and want to restore it, but I want to check if it's actually active first
+    success_criteria: The user is informed that their service is already active and does not need restoration
+    response_guide: Say 'I think my service is suspended, can you help me restore it?' Provide your account details. When
+      told the service is currently active and fully functional, express relief
+    max_turns: 8
+  expectations:
+  - The agent checks the account status and informs the user that the service is already active
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

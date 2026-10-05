@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__immediate_request
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to speak to a human representative immediately without dealing with an automated system
+    success_criteria: The agent immediately triggers a live agent transfer with the correct verbatim handoff message
+    response_guide: As soon as the call connects and the greeting starts, interrupt and say 'I want to talk to a person.'
+    max_turns: 8
+  expectations:
+  - The agent must immediately play the verbatim live agent handoff message
+  - The agent must terminate the automated session with the reason 'user\_requested\_agent'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

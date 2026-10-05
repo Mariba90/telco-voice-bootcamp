@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_during_troubleshooting
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to fix my TV signal, but I get annoyed with the automated troubleshooting steps and want a human
+    success_criteria: The user starts technical troubleshooting, requests a human mid-flow, and is transferred immediately
+    response_guide: Say 'My TV has no signal.' Let the agent start the diagnostic questions, then interrupt with 'This is
+      taking too long, connect me to a person.'
+    max_turns: 8
+  expectations:
+  - The agent must stop the troubleshooting flow immediately upon the user's request for an agent
+  - The agent must play the verbatim live agent handoff message
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

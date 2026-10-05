@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__transfer_number_happy_path
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to transfer my existing phone number from my old carrier to Telco
+    success_criteria: The agent collects the necessary transfer details (old number, account number, and PIN) and initiates
+      the port-in process
+    response_guide: Say 'I want to transfer my number from another carrier.' Provide your current phone number, your previous
+      carrier's account number, and the transfer PIN when requested
+    max_turns: 8
+  expectations:
+  - The agent must initiate the number-transfer process
+  - The agent must provide a confirmation or tracking details for the transfer
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

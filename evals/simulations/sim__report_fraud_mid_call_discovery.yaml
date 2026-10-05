@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__report_fraud_mid_call_discovery
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I call to check my bill, but during the call I realize there are fraudulent charges, so I want to report fraud immediately
+    success_criteria: The user successfully pivots to reporting fraud, receives the empathy protocol, and is immediately escalated
+    response_guide: Start by asking to check your bill. Once identified, say 'Wait, I see a charge for a phone I never bought.
+      Someone hacked my account, this is fraud\!' and demand to speak to the fraud team
+    max_turns: 8
+  expectations:
+  - The agent immediately stops the billing flow upon the fraud claim
+  - The user hears the verbatim empathy protocol and is escalated to a live agent
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

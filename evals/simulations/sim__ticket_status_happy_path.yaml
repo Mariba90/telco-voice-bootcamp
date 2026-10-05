@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__ticket_status_happy_path
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to check the status of the open support ticket for my TV service
+    success_criteria: The user successfully learns the current status of their open support ticket
+    response_guide: Ask about the status of your open support ticket. Provide your account details and verify your identity.
+      Confirm which ticket you are asking about
+    max_turns: 8
+  expectations:
+  - The user is provided with the current status of their open support ticket
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

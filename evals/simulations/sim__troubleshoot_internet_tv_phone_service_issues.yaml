@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__troubleshoot_internet_tv_phone_service_issues
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Troubleshoot internet, TV, or phone service issues
+    success_criteria: 'The agent accomplishes: troubleshoot internet, TV, or phone service issues.'
+    response_guide: Play a user who needs to troubleshoot internet, TV, or phone service issues. Provide details the agent
+      asks for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: troubleshoot internet, TV, or phone service issues.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

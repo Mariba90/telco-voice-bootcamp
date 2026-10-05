@@ -1,0 +1,13 @@
+{
+  "displayName": "sales_agent",
+  "instruction": "agents/sales_agent/instruction.txt",
+  "tools": [
+    "check_service_coverage",
+    "fetch_plan_catalog",
+    "place_service_order",
+    "process_warranty_claim",
+    "send_sms_notification",
+    "execute_live_agent_handover",
+    "execute_business_handover"
+  ]
+}

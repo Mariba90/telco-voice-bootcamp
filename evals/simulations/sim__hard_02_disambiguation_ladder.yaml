@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__hard_02_disambiguation_ladder
+  tags:
+  - P0
+  - disambiguation
+  - ladder
+  - M1
+  - hard_test
+  steps:
+  - goal: Verify 3-attempt clarification ladder on vague intent before escalating.
+    success_criteria: The agent asks at most 3 targeted clarification questions then transfers with disambig_max_attempts.
+    response_guide: Say 'I have a problem with my account.' When asked, say 'It is not working.' When asked again, say 'The
+      thing.'
+    max_turns: 8
+  expectations:
+  - The agent must ask at most one disambiguation question per unresolved attempt
+  - Upon reaching 3 unresolved clarification attempts, the agent must escalate to a human agent
+  - The agent must use reason code disambig_max_attempts
+  session_parameters:
+    auth_status: Pass

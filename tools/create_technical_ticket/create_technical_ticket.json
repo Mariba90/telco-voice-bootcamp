@@ -1,0 +1,8 @@
+{
+  "displayName": "create_technical_ticket",
+  "pythonFunction": {
+    "name": "create_technical_ticket",
+    "description": "Creates a technical support escalation ticket when virtual repair does not resolve the issue. Create a technical support ticket for our engineering team.",
+    "pythonCode": "tools/create_technical_ticket/python_function/python_code.py"
+  }
+}

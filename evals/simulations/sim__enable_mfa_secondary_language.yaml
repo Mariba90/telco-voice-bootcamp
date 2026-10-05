@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__enable_mfa_secondary_language
+  tags:
+  - P0
+  - simulations
+  - auth
+  - security
+  - M7
+  steps:
+  - goal: I want to enable multi-factor authentication, speaking entirely in Spanish
+    success_criteria: The user successfully navigates the entire flow and enables MFA in Spanish without any language degradation
+    response_guide: "Speak entirely in Spanish. Say 'Quiero activar la autenticaci\xF3n de dos factores.' Provide your account\
+      \ details and complete the verification in Spanish"
+    max_turns: 8
+  expectations:
+  - The entire conversation remains in Spanish
+  - The user successfully enables multi-factor authentication
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

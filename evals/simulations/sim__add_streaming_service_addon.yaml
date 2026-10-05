@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__add_streaming_service_addon
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to add a streaming service add-on to my current plan
+    success_criteria: The agent authenticates the user, presents the available streaming add-ons, and adds the selected service
+      to the account
+    response_guide: Say 'I want to add a streaming service to my plan.' Authenticate when prompted. Select the streaming option
+      and confirm the monthly charge
+    max_turns: 8
+  expectations:
+  - The agent must add the streaming service to the account and state the new monthly charge
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

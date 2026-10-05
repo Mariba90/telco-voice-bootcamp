@@ -1,0 +1,8 @@
+{
+  "displayName": "execute_suspend_restore",
+  "pythonFunction": {
+    "name": "execute_suspend_restore",
+    "description": "Executes service suspension or restoration on the network switch. Commit the service restoration request.",
+    "pythonCode": "tools/execute_suspend_restore/python_function/python_code.py"
+  }
+}

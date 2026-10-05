@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__report_fraud_identity_theft
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I want to report that someone has opened a fraudulent account using my personal information
+    success_criteria: The user is immediately escalated to the fraud department with the verbatim empathy protocol, bypassing
+      standard authentication
+    response_guide: Say 'I found out someone opened a fake account in my name.' Explain that you don't have an account number
+      because it's identity theft
+    max_turns: 8
+  expectations:
+  - The user hears the verbatim empathy protocol
+  - The user is immediately escalated to a live agent without any self-serve or authentication attempts
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

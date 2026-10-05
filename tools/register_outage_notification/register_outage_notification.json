@@ -1,0 +1,8 @@
+{
+  "displayName": "register_outage_notification",
+  "pythonFunction": {
+    "name": "register_outage_notification",
+    "description": "Subscribes caller to SMS restoration alerts for an active outage. Register the caller for outage restoration SMS updates.",
+    "pythonCode": "tools/register_outage_notification/python_function/python_code.py"
+  }
+}

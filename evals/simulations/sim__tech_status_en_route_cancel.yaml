@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__tech_status_en_route_cancel
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to check on my technician's arrival, and if they are close, I want to leave a note for them since I can't
+      cancel now
+    success_criteria: The user learns the technician is en-route, is informed they cannot cancel at this stage, and successfully
+      leaves a note
+    response_guide: Ask for the technician's status. When told they are en-route, ask if you can cancel. When told it's too
+      late, ask to leave a note instead
+    max_turns: 8
+  expectations:
+  - The user is informed that the technician is en-route and cannot be cancelled, but a note is successfully attached
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

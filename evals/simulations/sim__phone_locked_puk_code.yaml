@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__phone_locked_puk_code
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: My phone is locked and asking for a PUK code, and I need to get it unlocked
+    success_criteria: The agent authenticates the user and provides the correct PUK code to unlock the phone
+    response_guide: Explain that your phone is locked and asking for a PUK code. Provide your account details and enter your
+      4-digit PIN via DTMF when asked. Write down the PUK code provided by the agent
+    max_turns: 8
+  expectations:
+  - The agent must provide the PUK code only after successful identity verification
+  - The agent must not speak the PIN back to the caller
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

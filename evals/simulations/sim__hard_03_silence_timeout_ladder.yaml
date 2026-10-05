@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__hard_03_silence_timeout_ladder
+  tags:
+  - P0
+  - silence
+  - timeout
+  - strike
+  - M1
+  - hard_test
+  steps:
+  - goal: Verify 3-consecutive silence/no-input events trigger live agent escalation.
+    success_criteria: The agent reprompts gracefully on silence and escalates on 3rd consecutive timeout.
+    response_guide: Remain silent when greeted and when reprompted across 3 consecutive turns.
+    max_turns: 8
+  expectations:
+  - The agent must reprompt the caller on initial silence
+  - After 3 consecutive no-input events, the agent must escalate to a human representative
+  - The agent must emit the verbatim live agent handoff message
+  session_parameters:
+    auth_status: Fail

@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__warranty_claim_physical_damage_rejection
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I dropped my phone and the screen cracked, and I want to file a warranty claim to get it fixed
+    success_criteria: The agent identifies that physical damage is not covered under the standard warranty and redirects the
+      user to insurance or repair services
+    response_guide: Say 'I want to file a warranty claim for my broken screen.' Authenticate when prompted. Admit that you
+      dropped the phone when asked how it happened
+    max_turns: 8
+  expectations:
+  - The agent must explain that physical damage is excluded from the warranty
+  - The agent must not process a warranty claim for physical damage
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

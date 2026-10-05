@@ -1,0 +1,8 @@
+{
+  "displayName": "create_dispute_ticket",
+  "pythonFunction": {
+    "name": "create_dispute_ticket",
+    "description": "Opens a formal billing dispute ticket for an itemized charge. Inform the customer you are filing a billing dispute ticket.",
+    "pythonCode": "tools/create_dispute_ticket/python_function/python_code.py"
+  }
+}

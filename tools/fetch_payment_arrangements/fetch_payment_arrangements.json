@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_payment_arrangements",
+  "pythonFunction": {
+    "name": "fetch_payment_arrangements",
+    "description": "Fetches available installment or payment arrangement options. Check available payment arrangement plans.",
+    "pythonCode": "tools/fetch_payment_arrangements/python_function/python_code.py"
+  }
+}

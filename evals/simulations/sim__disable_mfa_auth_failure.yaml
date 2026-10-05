@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__disable_mfa_auth_failure
+  tags:
+  - P0
+  - simulations
+  - auth
+  - security
+  - M7
+  steps:
+  - goal: I want to disable MFA but I cannot pass the step-up security check
+    success_criteria: The user is prevented from disabling MFA and is escalated to a specialist due to authentication failure
+    response_guide: Say 'I want to turn off multi-factor authentication.' Provide your account details. When prompted for
+      the step-up PIN, enter incorrect digits three times
+    max_turns: 8
+  expectations:
+  - The user is blocked from making changes and is escalated to a live agent after failing authentication
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

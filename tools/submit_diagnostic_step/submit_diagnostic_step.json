@@ -1,0 +1,8 @@
+{
+  "displayName": "submit_diagnostic_step",
+  "pythonFunction": {
+    "name": "submit_diagnostic_step",
+    "description": "Submits the result of a diagnostic troubleshooting step. Process the diagnostic step outcome.",
+    "pythonCode": "tools/submit_diagnostic_step/python_function/python_code.py"
+  }
+}

@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__warranty_claim_defective_battery
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: My phone's battery is swelling and won't hold a charge, and I want to file a warranty claim
+    success_criteria: The agent authenticates the user, verifies the warranty status, and processes the replacement claim
+    response_guide: Say 'My phone is defective and I need to file a warranty claim.' Authenticate when prompted. Describe
+      the battery issue. Confirm you want a replacement shipped
+    max_turns: 8
+  expectations:
+  - The agent must verify that the device is in-warranty before processing the claim
+  - The agent must process the warranty claim and provide shipping details
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

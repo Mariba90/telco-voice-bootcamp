@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_after_hours_fraud
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  - after_hours
+  steps:
+  - goal: I want to report urgent fraud on my account late at night and speak to a live representative
+    success_criteria: The user reports fraud after hours and is immediately escalated to the 24/7 live queue
+    response_guide: Say 'Someone hacked my account and made unauthorized charges\!' When the agent responds, say 'I need to
+      speak to a fraud specialist right now.'
+    max_turns: 8
+  expectations:
+  - The agent must bypass normal authentication and immediately trigger the fraud escalation path
+  - The agent must connect the user to the 24/7 live queue even if it is after hours
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

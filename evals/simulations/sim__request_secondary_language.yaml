@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_secondary_language
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to speak to a Spanish-speaking representative
+    success_criteria: The user requests a representative in their preferred language and is transferred using the localized
+      verbatim handoff
+    response_guide: Speak in Spanish (or your secondary language) and say 'Quiero hablar con un representante' (I want to
+      speak to a representative)
+    max_turns: 8
+  expectations:
+  - The agent must remain in the secondary language for the handoff
+  - The agent must play the localized verbatim live agent handoff message
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

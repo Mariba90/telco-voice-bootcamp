@@ -1,0 +1,32 @@
+{
+  "displayName": "root_agent",
+  "instruction": "agents/root_agent/instruction.txt",
+  "childAgents": [
+    "billing_agent",
+    "tech_support_agent",
+    "sales_agent",
+    "appointments_agent",
+    "account_agent"
+  ],
+  "tools": [
+    "end_session",
+    "fetch_customer_profile",
+    "send_authentication_otp",
+    "validate_authentication_otp",
+    "validate_authentication_pin",
+    "evaluate_routing_rules",
+    "execute_live_agent_handover",
+    "execute_business_handover",
+    "check_suspension_status",
+    "evaluate_restoration_eligibility",
+    "execute_suspend_restore",
+    "send_sms_notification",
+    "place_service_order"
+  ],
+  "beforeModelCallbacks": [
+    {
+      "description": "Enforce non-interruptible legal notice playback and barge-in suppression",
+      "pythonCode": "agents/root_agent/callbacks/handle_legal_notice.py"
+    }
+  ]
+}

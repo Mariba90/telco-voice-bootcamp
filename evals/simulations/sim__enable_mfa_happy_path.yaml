@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__enable_mfa_happy_path
+  tags:
+  - P0
+  - simulations
+  - auth
+  - security
+  - M7
+  steps:
+  - goal: I want to enable two-factor authentication on my account to make it more secure
+    success_criteria: The user successfully completes step-up authentication and has multi-factor authentication enabled
+    response_guide: Say 'I want to enable MFA.' Provide your account details, complete the step-up verification process, and
+      confirm you want to turn it on
+    max_turns: 8
+  expectations:
+  - The user completes step-up authentication
+  - The user receives confirmation that multi-factor authentication is now enabled
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

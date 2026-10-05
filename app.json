@@ -1,0 +1,559 @@
+{
+  "name": "telco-voice-central",
+  "displayName": "Telco Voice Central",
+  "rootAgent": "root_agent",
+  "variableDeclarations": [
+    {
+      "name": "clid",
+      "description": "Incoming caller ID phone number",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "tfn",
+      "description": "Dialed toll-free service number",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "cirn",
+      "description": "Customer reference number",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "billing_account",
+      "description": "Selected billing account number",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "customer_type",
+      "description": "Customer relationship type: New or Existing",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "user_id",
+      "description": "Internal customer identifier",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "auth_status",
+      "description": "Verification status: Pass or Fail",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "identification_status",
+      "description": "Identity match status: Pass or Fail",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "business_flag",
+      "description": "Flag indicating if account is a business account",
+      "schema": {
+        "type": "BOOLEAN",
+        "required": []
+      }
+    },
+    {
+      "name": "route",
+      "description": "Active routing target module code",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "lob",
+      "description": "Line of business: mobility, internet, tv, homephone, smarthome",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "tv_sub_type",
+      "description": "TV service sub-type: streaming, satellite, streaming_only",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "region",
+      "description": "Service geographic region",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "region_source",
+      "description": "Source of region: pre_call, account, or caller",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "language",
+      "description": "Configured language tier: primary or secondary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "language_locale",
+      "description": "Concrete language locale code (e.g. en-US, es-US)",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "language_locked",
+      "description": "Whether the language preference is locked for the call",
+      "schema": {
+        "type": "BOOLEAN",
+        "required": []
+      }
+    },
+    {
+      "name": "detected_language",
+      "description": "Platform detected language code",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "utterance",
+      "description": "Sanitized current intent text",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "dtmf_digits",
+      "description": "Turn-scoped keypad digits",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "local_noinput_counter",
+      "description": "Consecutive no-input count in active module",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "global_err_count",
+      "description": "Call-wide validation error counter",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "no_match_confirmation_count",
+      "description": "Disambiguation clarification attempts count",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "misc_counter",
+      "description": "Flow helper counter",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "mock_mode",
+      "description": "Evaluation environment mock flag",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "last_pmt_amt",
+      "description": "Amount of last recorded payment",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "amount",
+      "description": "Search or requested monetary amount",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "ban_type",
+      "description": "Billing account type classification",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "is_prepaid",
+      "description": "Whether service is prepaid",
+      "schema": {
+        "type": "BOOLEAN",
+        "required": []
+      }
+    },
+    {
+      "name": "loyalty_limit",
+      "description": "Loyalty adjustment ceiling",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "vr_task_count",
+      "description": "Virtual repair step progress counter",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "ticket_state",
+      "description": "Status of support ticket: open, in-progress, closed",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "item_list",
+      "description": "Validated equipment selection list",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "intent_type",
+      "description": "Specific classified sub-intent",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "api_resp",
+      "description": "Redacted API response summary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "sms_type",
+      "description": "SMS template type: Public or Private",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "sms_content",
+      "description": "Sanitized SMS display text",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "sms_status",
+      "description": "SMS transmission delivery status",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "subscription_id",
+      "description": "Durable outage or notification subscription identifier",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "callback_status",
+      "description": "Callback request confirmation status",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "session_id",
+      "description": "Unique call session ID",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "current_module",
+      "description": "Active module identifier (M1 through M8)",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "pending_intents",
+      "description": "List of queued caller requests",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "authenticated_account_id",
+      "description": "Account identifier bound to active authentication",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "authorized_service_ids",
+      "description": "List of authorized service lines",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "auth_method",
+      "description": "Method used for authentication: OTP, PIN",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "auth_time",
+      "description": "Timestamp of completed authentication",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "auth_attempt_count",
+      "description": "Count of failed authentication factor attempts",
+      "schema": {
+        "type": "INTEGER",
+        "required": []
+      }
+    },
+    {
+      "name": "notice_key",
+      "description": "Active legal notice template key",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "notice_version",
+      "description": "Active legal notice version",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "notice_locale",
+      "description": "Active legal notice locale",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "notice_playback_status",
+      "description": "Playback status: not_started, playing, completed, incomplete",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "operation_id",
+      "description": "Durable mutation operation tracking ID",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "idempotency_key",
+      "description": "Idempotency key for mutation operations",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "operation_type",
+      "description": "Operation type: statement_credit, payment_refund, order, restore",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "operation_status",
+      "description": "Operation status: draft, awaiting_confirmation, submitted, pending, succeeded, failed, unknown, cancelled",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "operation_account_id",
+      "description": "Account bound to the active operation",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "eligibility_decision",
+      "description": "Authoritative backend eligibility decision payload",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "restoration_decision",
+      "description": "Authoritative backend service restoration decision payload",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "handover_status",
+      "description": "Status of live queue handover: handover_accepted, handover_failed",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "terminal_outcome",
+      "description": "Terminal call completion outcome",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "terminal_trigger",
+      "description": "Reason trigger leading to call termination or handoff",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "reason_code",
+      "description": "Compatibility escalation reason code",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "safety_category",
+      "description": "Safety evaluation category: self_harm, threat, anger, benign",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "day_val",
+      "description": "Day value temporary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "date_val",
+      "description": "Date value temporary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "month_val",
+      "description": "Month value temporary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "end_time",
+      "description": "End time temporary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    },
+    {
+      "name": "flag_val",
+      "description": "Generic flag temporary",
+      "schema": {
+        "type": "STRING",
+        "required": []
+      }
+    }
+  ]
+}

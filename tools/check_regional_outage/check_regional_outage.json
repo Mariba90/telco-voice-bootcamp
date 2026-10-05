@@ -1,0 +1,8 @@
+{
+  "displayName": "check_regional_outage",
+  "pythonFunction": {
+    "name": "check_regional_outage",
+    "description": "Checks for active service outages in the specified region and line of business. Check if there are any active network outages in the area.",
+    "pythonCode": "tools/check_regional_outage/python_function/python_code.py"
+  }
+}

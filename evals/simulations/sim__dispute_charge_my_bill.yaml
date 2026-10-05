@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__dispute_charge_my_bill
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Dispute a charge on my bill
+    success_criteria: 'The agent accomplishes: dispute a charge on my bill.'
+    response_guide: Play a user who needs to dispute a charge on my bill. Provide details the agent asks for and pursue it
+      until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: dispute a charge on my bill.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

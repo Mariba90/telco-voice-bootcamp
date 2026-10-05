@@ -1,0 +1,8 @@
+{
+  "displayName": "evaluate_routing_rules",
+  "pythonFunction": {
+    "name": "evaluate_routing_rules",
+    "description": "Evaluates intent classification and suggested routing module. Determine the best department to route the caller.",
+    "pythonCode": "tools/evaluate_routing_rules/python_function/python_code.py"
+  }
+}

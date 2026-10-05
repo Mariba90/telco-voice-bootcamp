@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_refund_credit
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Request a refund or credit
+    success_criteria: 'The agent accomplishes: request a refund or credit.'
+    response_guide: Play a user who needs to request a refund or credit. Provide details the agent asks for and pursue it
+      until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: request a refund or credit.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

@@ -1,0 +1,8 @@
+{
+  "displayName": "process_warranty_claim",
+  "pythonFunction": {
+    "name": "process_warranty_claim",
+    "description": "Evaluates device warranty status and files replacement claims. Check warranty eligibility for the device.",
+    "pythonCode": "tools/process_warranty_claim/python_function/python_code.py"
+  }
+}

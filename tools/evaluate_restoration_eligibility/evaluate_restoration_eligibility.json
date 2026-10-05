@@ -1,0 +1,8 @@
+{
+  "displayName": "evaluate_restoration_eligibility",
+  "pythonFunction": {
+    "name": "evaluate_restoration_eligibility",
+    "description": "Evaluates whether a suspended service qualifies for instant restoration. Evaluate service restoration eligibility.",
+    "pythonCode": "tools/evaluate_restoration_eligibility/python_function/python_code.py"
+  }
+}

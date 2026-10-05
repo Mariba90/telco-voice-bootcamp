@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_customer_profile",
+  "pythonFunction": {
+    "name": "fetch_customer_profile",
+    "description": "Fetches customer profile, line of business, and account flags by phone number or account number. Let the customer know you are looking up their account details.",
+    "pythonCode": "tools/fetch_customer_profile/python_function/python_code.py"
+  }
+}

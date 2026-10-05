@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__report_fraud_upset
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I am extremely upset because my account has been compromised and I want to report fraud
+    success_criteria: The user is handled with extreme care, hears the empathy protocol, and is immediately transferred to
+      a live specialist
+    response_guide: Say 'This is crazy, someone has hacked into my account and changed my details\! I need to report fraud
+      immediately\!' Speak with an anxious, urgent tone
+    max_turns: 8
+  expectations:
+  - The user hears the verbatim empathy protocol
+  - The user is immediately escalated to a live agent
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

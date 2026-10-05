@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_appointment_same_day
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I need to cancel my technician appointment that is scheduled for later today
+    success_criteria: The agent warns the user about the same-day cancellation policy, asks for double confirmation, and cancels
+      the appointment
+    response_guide: Say 'I need to cancel my appointment today.' Authenticate when prompted. Confirm twice when the agent
+      warns you that it cannot be undone once canceled
+    max_turns: 8
+  expectations:
+  - The agent must require double confirmation for same-day cancellations
+  - The agent must successfully cancel the appointment and send an SMS confirmation
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

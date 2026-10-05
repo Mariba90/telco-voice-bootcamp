@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__check_status_technician_visit_ticket
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Check the status of a technician visit or support ticket
+    success_criteria: 'The agent accomplishes: check the status of a technician visit or support ticket.'
+    response_guide: Play a user who needs to check the status of a technician visit or support ticket. Provide details the
+      agent asks for and pursue it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: check the status of a technician visit or support ticket.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

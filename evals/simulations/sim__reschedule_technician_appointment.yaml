@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__reschedule_technician_appointment
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I need to reschedule my upcoming technician appointment to a different day
+    success_criteria: The agent finds the existing appointment, offers alternative slots, commits the reschedule, and sends
+      an SMS confirmation
+    response_guide: Say 'I need to reschedule my technician appointment.' Authenticate when prompted. Choose a new slot from
+      the options provided
+    max_turns: 8
+  expectations:
+  - The agent must look up the active appointment first
+  - The agent must confirm the new date and time back to the caller
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

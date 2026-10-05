@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__upgrade_mobile_plan_data
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to upgrade my current mobile plan to one with more high-speed data
+    success_criteria: The agent presents 2-3 plan options, helps the user select one, and completes the plan upgrade
+    response_guide: Say 'I want to upgrade my plan.' Authenticate when prompted. Ask for options with more data. Choose the
+      recommended mid-tier plan and confirm the change
+    max_turns: 8
+  expectations:
+  - The agent must present no more than 3 plan options
+  - The agent must successfully update the user's plan and confirm the new price
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

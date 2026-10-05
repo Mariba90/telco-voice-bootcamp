@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__upgrade_my_plan_add_new_services
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: Upgrade my plan or add new services
+    success_criteria: 'The agent accomplishes: upgrade my plan or add new services.'
+    response_guide: Play a user who needs to upgrade my plan or add new services. Provide details the agent asks for and pursue
+      it until resolved.
+    max_turns: 8
+  expectations:
+  - 'The agent addresses the user''s goal: upgrade my plan or add new services.'
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

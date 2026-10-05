@@ -1,0 +1,8 @@
+{
+  "displayName": "place_service_order",
+  "pythonFunction": {
+    "name": "place_service_order",
+    "description": "Submits a confirmed service addition or upgrade order. Submit the confirmed service order.",
+    "pythonCode": "tools/place_service_order/python_function/python_code.py"
+  }
+}

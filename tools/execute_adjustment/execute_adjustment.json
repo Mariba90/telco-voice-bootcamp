@@ -1,0 +1,8 @@
+{
+  "displayName": "execute_adjustment",
+  "pythonFunction": {
+    "name": "execute_adjustment",
+    "description": "Commits an authorized statement credit or refund to the billing system. Tell the customer you are processing the authorized credit adjustment.",
+    "pythonCode": "tools/execute_adjustment/python_function/python_code.py"
+  }
+}

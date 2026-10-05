@@ -1,0 +1,8 @@
+{
+  "displayName": "send_authentication_otp",
+  "pythonFunction": {
+    "name": "send_authentication_otp",
+    "description": "Dispatches a 6-digit one-time passcode to the verified on-file contact number. Inform the customer you are sending a verification code to their phone.",
+    "pythonCode": "tools/send_authentication_otp/python_function/python_code.py"
+  }
+}

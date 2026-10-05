@@ -1,0 +1,16 @@
+{
+  "displayName": "account_agent",
+  "instruction": "agents/account_agent/instruction.txt",
+  "tools": [
+    "send_password_reset_sms",
+    "check_suspension_status",
+    "evaluate_restoration_eligibility",
+    "execute_suspend_restore",
+    "send_sms_notification",
+    "validate_authentication_pin",
+    "execute_live_agent_handover",
+    "process_bill_payment",
+    "execute_business_handover",
+    "place_service_order"
+  ]
+}

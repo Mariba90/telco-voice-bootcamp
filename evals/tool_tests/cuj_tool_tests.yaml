@@ -1,0 +1,203 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# =============================================================================
+# TOOL TESTS: 7 Core Customer Journeys (CUJ-1 through CUJ-7)
+# Top-level key MUST be 'tests:' for SCRAPI test runner compatibility.
+# =============================================================================
+
+tests:
+  # ---------------------------------------------------------------------------
+  # CUJ-1: Password Reset & Authentication Tools
+  # ---------------------------------------------------------------------------
+  - name: test_send_password_reset_sms_success
+    tool: send_password_reset_sms
+    args:
+      cirn: "CRN-1002"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.sent"
+          operator: equals
+          value: true
+        - path: "$.result.valid_minutes"
+          operator: equals
+          value: 30
+
+  - name: test_validate_authentication_otp_valid
+    tool: validate_authentication_otp
+    args:
+      challenge_id: "CHAL-8891"
+      code: "123456"
+    variables:
+      auth_status: "not_authenticated"
+    expectations:
+      response:
+        - path: "$.result.auth_status"
+          operator: equals
+          value: "Pass"
+
+  - name: test_validate_authentication_otp_invalid
+    tool: validate_authentication_otp
+    args:
+      challenge_id: "CHAL-8891"
+      code: "12"
+    variables:
+      auth_status: "not_authenticated"
+    expectations:
+      response:
+        - path: "$.result.auth_status"
+          operator: equals
+          value: "Fail"
+
+  # ---------------------------------------------------------------------------
+  # CUJ-2: Billing & Adjustment Tools
+  # ---------------------------------------------------------------------------
+  - name: test_fetch_recent_bills_success
+    tool: fetch_recent_bills
+    args:
+      billing_account: "ACC-8821"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.bills[0].bill_id"
+          operator: is_not_null
+        - path: "$.result.bills[0].total_amount"
+          operator: is_not_null
+
+  - name: test_evaluate_adjustment_eligibility_eligible
+    tool: evaluate_adjustment_eligibility
+    args:
+      billing_account: "ACC-8821"
+      charge_id: "CHG-102"
+      requested_amount: 14.50
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.verdict"
+          operator: equals
+          value: "eligible"
+        - path: "$.result.allowed_amount"
+          operator: equals
+          value: 14.50
+
+  - name: test_execute_adjustment_success
+    tool: execute_adjustment
+    args:
+      decision_id: "DEC-8812"
+      billing_account: "ACC-8821"
+      amount: 14.50
+      operation_type: "statement_credit"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.status"
+          operator: equals
+          value: "succeeded"
+        - path: "$.result.operation_id"
+          operator: is_not_null
+
+  # ---------------------------------------------------------------------------
+  # CUJ-3: Tech Support & Virtual Repair Tools
+  # ---------------------------------------------------------------------------
+  - name: test_check_regional_outage_clear
+    tool: check_regional_outage
+    args:
+      region: "NE-METRO-01"
+      lob: "tv"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.notification_supported"
+          operator: equals
+          value: true
+
+  - name: test_start_virtual_repair_streaming
+    tool: start_virtual_repair
+    args:
+      cirn: "CRN-1002"
+      lob: "tv"
+      symptom: "no_signal"
+      tv_sub_type: "streaming"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.session_id"
+          operator: is_not_null
+        - path: "$.result.step_number"
+          operator: equals
+          value: 1
+
+  # ---------------------------------------------------------------------------
+  # CUJ-4: Appointment Reschedule Tools
+  # ---------------------------------------------------------------------------
+  - name: test_commit_appointment_reschedule_success
+    tool: commit_appointment_reschedule
+    args:
+      appointment_id: "APT-4401"
+      slot_id: "SLOT-FR-AM"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.confirmed"
+          operator: equals
+          value: true
+        - path: "$.result.appointment_id"
+          operator: equals
+          value: "APT-4401"
+
+  # ---------------------------------------------------------------------------
+  # CUJ-5: Sales Service Order Tools
+  # ---------------------------------------------------------------------------
+  - name: test_place_service_order_success
+    tool: place_service_order
+    args:
+      cirn: "CRN-1002"
+      plan_id: "PLAN-TV-ESSENTIAL"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.status"
+          operator: equals
+          value: "confirmed"
+        - path: "$.result.order_id"
+          operator: is_not_null
+
+  # ---------------------------------------------------------------------------
+  # CUJ-6: Service Suspension & Restoration Tools
+  # ---------------------------------------------------------------------------
+  - name: test_execute_suspend_restore_success
+    tool: execute_suspend_restore
+    args:
+      cirn: "CRN-1002"
+      action: "restore"
+      reason: "payment_received"
+    variables:
+      auth_status: "Pass"
+    expectations:
+      response:
+        - path: "$.result.new_state"
+          operator: equals
+          value: "active"
+        - path: "$.result.confirmation_number"
+          operator: is_not_null

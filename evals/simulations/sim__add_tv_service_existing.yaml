@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__add_tv_service_existing
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to add TV service to my existing home internet account
+    success_criteria: The agent checks service coverage, presents TV plan options, and places the order
+    response_guide: Say 'I would like to add TV service.' Provide your account number and authenticate. Choose the basic TV
+      package when offered
+    max_turns: 8
+  expectations:
+  - The agent must check service coverage before presenting TV plans
+  - The agent must state the order number and delivery/activation ETA
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

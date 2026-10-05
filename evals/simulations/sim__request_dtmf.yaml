@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__request_dtmf
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to reach an operator by pressing buttons on my phone keypad
+    success_criteria: The user presses '0' on their keypad and is immediately routed to a live agent
+    response_guide: Press '0' on your keypad during the greeting or when prompted to state your issue
+    max_turns: 8
+  expectations:
+  - The agent must detect the DTMF input and route to a live agent
+  - The agent must play the verbatim live agent handoff message
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

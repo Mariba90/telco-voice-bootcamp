@@ -1,0 +1,8 @@
+{
+  "displayName": "execute_business_handover",
+  "pythonFunction": {
+    "name": "execute_business_handover",
+    "description": "Transfers a business account caller to the dedicated business support desk. Connect business account caller to dedicated business support desk.",
+    "pythonCode": "tools/execute_business_handover/python_function/python_code.py"
+  }
+}

@@ -1,0 +1,21 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__tech_status_multiple_appointments
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to check the status of my TV installation appointment, but I also have an internet appointment scheduled
+    success_criteria: The user successfully clarifies which appointment they are asking about and receives the correct status
+    response_guide: Ask where your technician is. When the system asks which appointment you mean, specify it's for the TV
+      service
+    max_turns: 8
+  expectations:
+  - The user is prompted to disambiguate between their multiple appointments and receives the status for the correct one
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

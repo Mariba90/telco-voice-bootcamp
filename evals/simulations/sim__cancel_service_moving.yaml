@@ -1,0 +1,25 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_service_moving
+  tags:
+  - P0
+  - simulations
+  - cancellation
+  - port_out
+  - M7
+  steps:
+  - goal: I want to cancel my home internet service because I am moving to a new city where this company doesn't provide coverage
+    success_criteria: The user successfully authenticates, hears the mandatory contract cancellation fee disclosure, and completes
+      the cancellation request
+    response_guide: State that you want to cancel your service because you are moving. Provide your phone number when asked.
+      Complete the security verification by entering the OTP sent to your phone. Listen to the cancellation fee disclosure
+      and confirm you still want to proceed
+    max_turns: 8
+  expectations:
+  - The agent must read the contract cancellation fee disclosure verbatim before finalizing the cancellation
+  - The agent must authenticate the user before processing the cancellation
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

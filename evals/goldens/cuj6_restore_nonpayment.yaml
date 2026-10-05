@@ -1,0 +1,40 @@
+# yamllint disable rule:line-length
+# Copyright 2026 Google LLC
+common_session_parameters:
+  cirn: "CRN-1002"
+  billing_account: "ACC-8821"
+
+conversations:
+  - conversation: golden__cuj6__restore_suspended_service
+    tags: [P0, CUJ-6, goldens, restore, billing]
+    session_parameters:
+      auth_status: "Pass"
+      cirn: "CRN-1002"
+      billing_account: "ACC-8821"
+    turns:
+      - user: "<event>welcome</event>"
+        agent: "Thanks for calling Telco Voice Central. This call may be recorded for quality and training. How can I help you today?"
+      - user: "My service was shut off. I need to pay and get it reconnected."
+        agent: "Let me check the status of your account and pending balance."
+        tool_calls:
+          - action: check_suspension_status
+            args:
+              cirn: "CRN-1002"
+          - action: evaluate_restoration_eligibility
+            args:
+              billing_account: "ACC-8821"
+      - user: "Go ahead and charge $89.50 to my card on file."
+        agent: "Your payment of $89.50 has been approved, and your service restoration has been submitted. Your service will reactivate within minutes."
+        tool_calls:
+          - action: process_bill_payment
+            args:
+              billing_account: "ACC-8821"
+              amount: 89.50
+          - action: execute_suspend_restore
+            args:
+              cirn: "CRN-1002"
+              action: "restore"
+    expectations:
+      - "check_suspension_status must be called first"
+      - "process_bill_payment must precede execute_suspend_restore"
+      - "execute_suspend_restore must be called with action restore"

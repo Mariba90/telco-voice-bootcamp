@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__sim_issue_input_retry
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I need to fix my locked phone, but I am distracted during the call
+    success_criteria: The agent handles the user's silence gracefully using retry prompts, and eventually escalates to a live
+      agent after repeated no-inputs
+    response_guide: Say 'My phone is locked.' When the agent asks for your phone or account number, remain silent. Remain
+      silent again on the next prompt to test the retry-strike behavior
+    max_turns: 8
+  expectations:
+  - The agent must escalate to a live representative after 3 consecutive no-input events
+  - The agent must use the verbatim live agent handoff line
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

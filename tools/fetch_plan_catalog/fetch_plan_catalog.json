@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_plan_catalog",
+  "pythonFunction": {
+    "name": "fetch_plan_catalog",
+    "description": "Fetches 2 to 3 comparable plans and packages matching customer criteria. Pull up plan options and pricing catalog.",
+    "pythonCode": "tools/fetch_plan_catalog/python_function/python_code.py"
+  }
+}

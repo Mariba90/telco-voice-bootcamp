@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_recent_bills",
+  "pythonFunction": {
+    "name": "fetch_recent_bills",
+    "description": "Fetches recent statements, balances, and itemized charges for an authenticated account. Let the customer know you are pulling up their recent billing statements.",
+    "pythonCode": "tools/fetch_recent_bills/python_function/python_code.py"
+  }
+}

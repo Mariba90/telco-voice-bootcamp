@@ -1,0 +1,8 @@
+{
+  "displayName": "commit_appointment_booking",
+  "pythonFunction": {
+    "name": "commit_appointment_booking",
+    "description": "Books a new technician visit appointment. Lock in the technician appointment booking.",
+    "pythonCode": "tools/commit_appointment_booking/python_function/python_code.py"
+  }
+}

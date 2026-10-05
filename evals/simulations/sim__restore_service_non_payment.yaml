@@ -1,0 +1,25 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__restore_service_non_payment
+  tags:
+  - P0
+  - simulations
+  - restore
+  - M7
+  - M3
+  steps:
+  - goal: My service was suspended because I forgot to pay my bill, and I want to pay the balance and get it restored
+    success_criteria: The user is routed to billing to clear their balance, and once paid, is routed back to have their service
+      successfully restored with an SMS confirmation
+    response_guide: Say 'My service is suspended and I want it back on.' When told it's due to an unpaid balance, agree to
+      pay it. Provide payment details, and confirm you want the service restored
+    max_turns: 8
+  expectations:
+  - The user is routed to the billing module to clear the balance first
+  - The user's service is restored after the balance is cleared
+  - The user receives an SMS confirmation of the restoration
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

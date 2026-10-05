@@ -1,0 +1,8 @@
+{
+  "displayName": "validate_authentication_otp",
+  "pythonFunction": {
+    "name": "validate_authentication_otp",
+    "description": "Validates the 6-digit OTP code provided by the caller. If the code is invalid or consists of repeated digits (like 000000, 111111, 222222, 333333, etc.), returns auth_status 'Fail' and decrements attempts_remaining (starts at 3, decrements to 2, 1, 0). If valid, returns auth_status 'Pass'.",
+    "pythonCode": "tools/validate_authentication_otp/python_function/python_code.py"
+  }
+}

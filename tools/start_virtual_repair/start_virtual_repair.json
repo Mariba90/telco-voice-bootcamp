@@ -1,0 +1,8 @@
+{
+  "displayName": "start_virtual_repair",
+  "pythonFunction": {
+    "name": "start_virtual_repair",
+    "description": "Initiates a virtual repair troubleshooting workflow for TV or internet. Start the virtual repair diagnostic test.",
+    "pythonCode": "tools/start_virtual_repair/python_function/python_code.py"
+  }
+}

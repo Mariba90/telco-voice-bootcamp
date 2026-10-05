@@ -1,0 +1,14 @@
+{
+  "displayName": "billing_agent",
+  "instruction": "agents/billing_agent/instruction.txt",
+  "tools": [
+    "fetch_recent_bills",
+    "create_dispute_ticket",
+    "evaluate_adjustment_eligibility",
+    "execute_adjustment",
+    "process_bill_payment",
+    "configure_autopay",
+    "fetch_payment_arrangements",
+    "execute_live_agent_handover"
+  ]
+}

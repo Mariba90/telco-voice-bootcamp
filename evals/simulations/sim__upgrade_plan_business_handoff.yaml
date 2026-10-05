@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__upgrade_plan_business_handoff
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  - business_handoff
+  steps:
+  - goal: I want to upgrade the mobile plans for my business account
+    success_criteria: The agent detects that the caller is a business account and immediately transfers them to a business
+      specialist without attempting self-service
+    response_guide: Say 'I want to upgrade my business account plans.' Provide your business account number when asked
+    max_turns: 8
+  expectations:
+  - The agent must detect the business account and transfer immediately
+  - The agent must use the verbatim business handoff line
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    business_flag: true

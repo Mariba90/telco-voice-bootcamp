@@ -1,0 +1,8 @@
+{
+  "displayName": "fetch_active_appointments",
+  "pythonFunction": {
+    "name": "fetch_active_appointments",
+    "description": "Retrieves scheduled technician visits and their dispatch status. Lookup scheduled technician appointments.",
+    "pythonCode": "tools/fetch_active_appointments/python_function/python_code.py"
+  }
+}

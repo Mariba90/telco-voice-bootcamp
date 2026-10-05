@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__warranty_claim_out_warranty
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: My phone's speaker stopped working, and I want to see if I can file a warranty claim
+    success_criteria: The agent checks the device status, determines it is out of warranty, and offers alternative repair
+      options
+    response_guide: Say 'I need to file a warranty claim for my defective speaker.' Authenticate when prompted. When told
+      the device is out of warranty, ask what your options are
+    max_turns: 8
+  expectations:
+  - The agent must correctly identify that the device is out of warranty
+  - The agent must offer alternative repair or upgrade options instead of a free replacement
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

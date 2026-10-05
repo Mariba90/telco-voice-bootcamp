@@ -1,0 +1,8 @@
+{
+  "displayName": "send_sms_notification",
+  "pythonFunction": {
+    "name": "send_sms_notification",
+    "description": "Dispatches an SMS notification template (receipt, appointment details, etc.) to on-file contact. Send confirmation text message to caller.",
+    "pythonCode": "tools/send_sms_notification/python_function/python_code.py"
+  }
+}

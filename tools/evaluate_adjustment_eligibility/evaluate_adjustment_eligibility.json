@@ -1,0 +1,8 @@
+{
+  "displayName": "evaluate_adjustment_eligibility",
+  "pythonFunction": {
+    "name": "evaluate_adjustment_eligibility",
+    "description": "Authoritatively evaluates if a charge qualifies for a statement credit or refund. Check backend authorization for fee credit eligibility.",
+    "pythonCode": "tools/evaluate_adjustment_eligibility/python_function/python_code.py"
+  }
+}

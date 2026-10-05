@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__damaged_sim_replacement
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: My SIM card seems physically damaged after dropping my phone, and I need to get a replacement SIM
+    success_criteria: The agent processes a replacement SIM card order and provides the delivery details
+    response_guide: Say that your SIM card is damaged and you need a new one. Authenticate using the OTP sent to your backup
+      contact number. Accept the order for a replacement SIM
+    max_turns: 8
+  expectations:
+  - The agent must place an order for a replacement SIM card
+  - The agent must state the order number and delivery ETA
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

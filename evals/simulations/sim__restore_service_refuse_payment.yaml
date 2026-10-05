@@ -1,0 +1,25 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__restore_service_refuse_payment
+  tags:
+  - P0
+  - simulations
+  - restore
+  - M7
+  - M3
+  steps:
+  - goal: My service is suspended for non-payment, and I want it restored but I refuse to pay the outstanding balance right
+      now
+    success_criteria: The user is informed that the service cannot be restored without clearing the balance, and the session
+      ends or escalates without restoration
+    response_guide: Say 'My internet is suspended, turn it back on.' When told you must pay the outstanding balance first,
+      say 'I can't pay right now, just turn it on anyway.' Refuse any payment arrangements
+    max_turns: 8
+  expectations:
+  - The agent refuses to restore the service without a cleared balance
+  - The service remains suspended
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

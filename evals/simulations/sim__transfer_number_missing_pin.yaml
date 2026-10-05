@@ -1,0 +1,22 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__transfer_number_missing_pin
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to transfer my number, but I don't have my previous carrier's transfer PIN ready
+    success_criteria: The agent explains what information is needed, allows the user to find it, or offers to send an SMS
+      with instructions on how to get the PIN
+    response_guide: Say 'I want to transfer my number in.' When asked for the transfer PIN, say 'I don't have the PIN on me
+      right now.' Ask how you can find it or if they can text you instructions
+    max_turns: 8
+  expectations:
+  - The agent must handle the missing PIN gracefully by offering instructions or an SMS guide
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

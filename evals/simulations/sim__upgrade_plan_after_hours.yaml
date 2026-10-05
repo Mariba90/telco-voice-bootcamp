@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__upgrade_plan_after_hours
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  - after_hours
+  steps:
+  - goal: I want to upgrade my plan, but I am calling late at night after business hours
+    success_criteria: The agent recognizes that the sales queue is closed and schedules a next-business-day follow-up or handles
+      it gracefully
+    response_guide: Say 'I want to upgrade my plan.' Authenticate when prompted. When the agent explains that the sales department
+      is closed, agree
+    max_turns: 8
+  expectations:
+  - The agent must recognize that the sales queue is closed and schedule a next-business-day follow-up
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002

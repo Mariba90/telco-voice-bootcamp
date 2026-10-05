@@ -1,0 +1,25 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__cancel_service_after_hours
+  tags:
+  - P0
+  - simulations
+  - cancellation
+  - port_out
+  - M7
+  - after_hours
+  steps:
+  - goal: I want to cancel my internet service late at night
+    success_criteria: The user is informed that the cancellation queue is closed and is offered a next-business-day option
+      or
+    response_guide: Say 'I need to cancel my internet service immediately.' If the agent says the specialist queue is closed,
+      accept or next-business-day routing
+    max_turns: 8
+  expectations:
+  - The agent must recognize that the specialist queue is closed after hours for plan changes and cancellations
+  - The agent must route the request to the next business day
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

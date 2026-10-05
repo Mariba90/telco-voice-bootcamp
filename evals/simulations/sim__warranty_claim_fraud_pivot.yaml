@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__warranty_claim_fraud_pivot
+  tags:
+  - P0
+  - simulations
+  - fraud
+  - safety
+  - escalation
+  - M7
+  steps:
+  - goal: I want to file a warranty claim, but during the call, I realize someone has accessed my account fraudulently
+    success_criteria: The agent immediately stops the warranty flow, expresses empathy, and escalates to the fraud department
+      without attempting authentication
+    response_guide: Start by saying 'I need to file a warranty claim.' While the agent is looking up your account, say 'Wait,
+      I see a charge here I didn't make, I think someone used my account fraudulently\!'
+    max_turns: 8
+  expectations:
+  - The agent must immediately pivot to the fraud protocol without attempting authentication
+  - The agent must emit the verbatim empathy protocol and escalate with the correct fraud reason
+  session_parameters:
+    auth_status: Fail
+    cirn: CRN-1002

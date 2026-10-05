@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__port_out_mobile_number
+  tags:
+  - P0
+  - simulations
+  - cancellation
+  - port_out
+  - M7
+  steps:
+  - goal: I want to port my mobile phone number out to another carrier
+    success_criteria: The user authenticates, hears the cancellation disclosure, and receives the necessary information or
+      confirmation to transfer their number
+    response_guide: Say 'I need to port out my phone number to another network.' Provide your account details and complete
+      the security verification. Confirm you understand the terms when the agent explains the cancellation details
+    max_turns: 8
+  expectations:
+  - The agent must authenticate the user before providing port-out details
+  - The agent must read the contract cancellation fee disclosure verbatim
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

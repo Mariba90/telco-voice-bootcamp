@@ -1,0 +1,24 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__restore_service_lost_stolen_found
+  tags:
+  - P0
+  - simulations
+  - restore
+  - M7
+  - M3
+  steps:
+  - goal: I temporarily suspended my service because I lost my phone, but now I found it and want to restore my service
+    success_criteria: The user successfully verifies their identity and has their service restored immediately since there
+      is no balance owed
+    response_guide: Say 'I found my lost phone and I want to restore my suspended service.' Verify your identity when prompted,
+      and confirm the restoration
+    max_turns: 8
+  expectations:
+  - The user's service is restored immediately without being routed to billing
+  - The user receives an SMS confirmation of the restoration
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
+    billing_account: ACC-8821

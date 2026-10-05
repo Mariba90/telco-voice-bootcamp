@@ -1,0 +1,23 @@
+# Copyright 2026 Google LLC
+# yamllint disable rule:line-length
+evals:
+- name: sim__appointment_availability_sms_callback
+  tags:
+  - P0
+  - simulations
+  - device
+  - sim
+  - M7
+  steps:
+  - goal: I want to book an appointment for this Saturday, but there are no slots available
+    success_criteria: The agent checks availability, finds no slots for the requested window, and offers an SMS when a slot
+      opens up
+    response_guide: Say 'I need to book a technician for this Saturday.' Authenticate when prompted. When told there is no
+      availability, accept the offer for an SMS
+    max_turns: 8
+  expectations:
+  - The agent must offer an SMS when no slots are available in the requested window
+  - The agent must successfully register request
+  session_parameters:
+    auth_status: Pass
+    cirn: CRN-1002
