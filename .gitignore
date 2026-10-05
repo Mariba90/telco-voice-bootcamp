@@ -49,3 +49,6 @@ eval-reports/
 *.tmp
 tmp/
 temp/
+
+# Local SCRAPI/GCP deployment configuration
+gecx-config.json
